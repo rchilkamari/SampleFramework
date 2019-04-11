@@ -32,8 +32,9 @@ public class LoginPage extends TestBase {
 	
 	public LoginPage() {
 		
-		PageFactory.initElements(driver,this);
+		//WebDriver driver;
 		
+		PageFactory.initElements(driver,this);		
 		
 	}
 	

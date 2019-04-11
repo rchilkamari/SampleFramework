@@ -1,5 +1,6 @@
 package com.insurance.qa.base;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,7 +10,12 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.insurance.qa.utility.TestUtil;
 
 
@@ -17,8 +23,12 @@ public class TestBase {
 	
 	public static WebDriver driver;
 	public static Properties prop;
+	public static ExtentReports report;
+	public ExtentTest logger;
 	
-	public TestBase() {
+	public TestBase() {	
+		
+		
 		try {
 		prop =new Properties();
 		FileInputStream Fis;
@@ -32,13 +42,18 @@ public class TestBase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+			
 		
 	}
 	
-	public static void initialization() {
+	//@BeforeSuite
+	
+	public static void initialization() {		
+		
+		ExtentHtmlReporter extent = new ExtentHtmlReporter(new File(System.getProperty("user.dir")+"/Reports/report.html"));
+		report = new ExtentReports();
+		report.attachReporter(extent);	
+		
 		
 		String browserName=prop.getProperty("browser");
 		if(browserName.equals("chrome")) {
@@ -60,5 +75,11 @@ public class TestBase {
 		
 	}
 	
-
+	//@AfterSuite
+	
+	//public void tearDown() {
+		
+		//driver.close();
+		
+	//}
 }

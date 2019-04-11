@@ -3,8 +3,10 @@ package com.insurance.qa.testcases;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import com.insurance.qa.base.TestBase;
@@ -19,18 +21,22 @@ public class LoginPageTest extends TestBase{
 	public LoginPageTest() {
 		
 		super(); // To call all the initialization from Base
+		homePage = new HomePage();
+		
+		 loginPage = new LoginPage();
+		
 	}
 	
 
-	@BeforeClass
+	@BeforeSuite
 	
 	public void setUp() {
 		
 		initialization();
 		
-		 loginPage = new LoginPage();
-		 homePage = new HomePage();
+		logger=report.createTest("Login to application");
 		
+		 
 		 	
 	}
 	
@@ -60,26 +66,24 @@ public class LoginPageTest extends TestBase{
 		
 		String logoText = loginPage.ValidatelogoText();
 		Assert.assertEquals(logoText, "Demo Site");
+		logger.pass("Logo validation success");
 		
 	}
 	
 	@Test(priority=4)
 	
 	public void LoginTest() {
+		logger.info("Starting Application");
+		
 		
 		homePage =loginPage.login(prop.getProperty("login"), prop.getProperty("password"));
+		logger.pass("Login Success");
 		
 	}
 	
 	
 	
-	@AfterClass
-	
-	public void tearDown() {
-		
-		driver.close();
-		
-	}
+
 	
 	
 	
