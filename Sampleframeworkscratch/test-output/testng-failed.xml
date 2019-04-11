@@ -10,7 +10,6 @@
           <include name="validatelogo"/>
           <include name="tearDown"/>
           <include name="logoTextTest"/>
-          <include name="loginPageTitle"/>
         </methods>
       </class> <!-- com.insurance.qa.testcases.LoginPageTest -->
     </classes>
