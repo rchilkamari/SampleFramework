@@ -5,7 +5,6 @@
     <classes>
       <class name="com.insurance.qa.testcases.HomePageTest">
         <methods>
-          <include name="tearDown"/>
           <include name="HomePageTestFlow"/>
         </methods>
       </class> <!-- com.insurance.qa.testcases.HomePageTest -->
