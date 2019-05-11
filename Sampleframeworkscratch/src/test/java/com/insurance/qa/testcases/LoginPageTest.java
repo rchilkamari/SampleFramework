@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.insurance.qa.base.TestBase;
+import com.insurance.qa.utility.ReadConfig;
 import com.insurance.qa.webpages.HomePage;
 import com.insurance.qa.webpages.LoginPage;
 
@@ -18,6 +19,7 @@ public class LoginPageTest extends TestBase{
 	
 	LoginPage loginPage;
 	HomePage homePage;
+	ReadConfig readconfig;
 	
 	public LoginPageTest() {
 		
@@ -25,7 +27,8 @@ public class LoginPageTest extends TestBase{
 		homePage = new HomePage();
 		
 		 loginPage = new LoginPage();
-		
+		 readconfig = new ReadConfig();
+		 
 	}
 	
 
@@ -35,8 +38,7 @@ public class LoginPageTest extends TestBase{
 		
 		initialization();
 		
-		logger=report.createTest("Login to application");
-		
+		logger=report.createTest("Login to application");	
 		 
 		 	
 	}
@@ -77,7 +79,7 @@ public class LoginPageTest extends TestBase{
 		logger.info("Starting Application");
 		
 		
-		homePage =loginPage.login(prop.getProperty("login"), prop.getProperty("password"));
+		homePage =loginPage.login(readconfig.getUsername(), readconfig.getPassword());
 		logger.pass("Login Success");
 		
 	}

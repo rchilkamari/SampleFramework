@@ -6,16 +6,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.insurance.qa.utility.ReadConfig;
 import com.insurance.qa.utility.TestUtil;
 
 
@@ -26,8 +26,9 @@ public class TestBase {
 	public static ExtentReports report;
 	public ExtentTest logger;
 	
-	public TestBase() {	
-		
+	ReadConfig readConfig = new ReadConfig();
+	
+	/*public TestBase() {		
 		
 		try {
 		prop =new Properties();
@@ -44,25 +45,28 @@ public class TestBase {
 		}
 			
 		
-	}
+	}*/
 	
-	//@BeforeSuite
+	@BeforeClass
 	
-	public static void initialization() {		
+	public void initialization() {		
+	
 		
 		ExtentHtmlReporter extent = new ExtentHtmlReporter(new File(System.getProperty("user.dir")+"/Reports/report.html"));
 		report = new ExtentReports();
 		report.attachReporter(extent);	
 		
 		
+		
 		String browserName=prop.getProperty("browser");
 		if(browserName.equals("chrome")) {
-			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") +"/Drivers/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver",readConfig.getChromePath());
 			driver =new ChromeDriver();
 		}
 		else if(browserName.equals("IE")) {
 			
-			System.setProperty("webdriver.InternerExplorer.driver",System.getProperty("user.dir") +"/Drivers/IEDriverServer.exe");
+			System.setProperty("webdriver.InternerExplorer.driver",readConfig.getIEPath() );			
+			
 			driver =new InternetExplorerDriver();
 			
 		}
