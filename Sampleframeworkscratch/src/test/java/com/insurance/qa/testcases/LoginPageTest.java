@@ -11,9 +11,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.insurance.qa.base.TestBase;
-import com.insurance.qa.utility.ReadConfig;
+import com.insurance.qa.utilities.ReadConfig;
 import com.insurance.qa.webpages.HomePage;
 import com.insurance.qa.webpages.LoginPage;
+import com.sun.media.jfxmedia.logging.Logger;
 
 public class LoginPageTest extends TestBase{
 	
@@ -21,7 +22,7 @@ public class LoginPageTest extends TestBase{
 	HomePage homePage;
 	ReadConfig readconfig;
 	
-	public LoginPageTest() {
+	public LoginPageTest() {	
 		
 		super(); // To call all the initialization from Base
 		homePage = new HomePage();
@@ -30,25 +31,16 @@ public class LoginPageTest extends TestBase{
 		 readconfig = new ReadConfig();
 		 
 	}
-	
 
-	@BeforeClass
-	
-	public void setUp() {
-		
-		initialization();
-		
-		logger=report.createTest("Login to application");	
-		 
-		 	
-	}
-	
 	
 	@Test(priority=1)
 	
 	public void loginPageTitle() {
 		
+		logger.info("Logo validation success");
+		
 		String title = loginPage.ValidatePageTitle();
+		
 		Assert.assertEquals(title, "Insurance Broker System - Login");		
 		
 	}
@@ -69,7 +61,7 @@ public class LoginPageTest extends TestBase{
 		
 		String logoText = loginPage.ValidatelogoText();
 		Assert.assertEquals(logoText, "Demo Site");
-		logger.pass("Logo validation success");
+		//logger.pass("Logo validation success");
 		
 	}
 	
@@ -80,7 +72,7 @@ public class LoginPageTest extends TestBase{
 		
 		
 		homePage =loginPage.login(readconfig.getUsername(), readconfig.getPassword());
-		logger.pass("Login Success");
+		//logger.pass("Login Success");
 		
 	}
 	

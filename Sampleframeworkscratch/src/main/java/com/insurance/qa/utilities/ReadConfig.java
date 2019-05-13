@@ -1,4 +1,4 @@
-package com.insurance.qa.utility;
+package com.insurance.qa.utilities;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,9 +8,16 @@ public class ReadConfig {
 
 	Properties pro;
 	
+	/**
+	 * Reading Config file from the properties file
+	 * 
+	 */
+	
 	public ReadConfig()
 	{
 		File src = new File(System.getProperty("user.dir")+ "/src/main/java/com/insurance/qa/config/config.properties");
+		
+		System.out.println(src);
 		
 		//System.getProperty("user.dir")+ "/src/main/java/com/insurance/qa/config/config.properties"
 
