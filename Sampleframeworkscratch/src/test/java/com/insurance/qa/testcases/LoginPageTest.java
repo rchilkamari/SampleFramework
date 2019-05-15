@@ -38,6 +38,8 @@ public class LoginPageTest extends TestBase{
 	
 	public void loginPageTitle() {
 		
+	
+		
 		logger.info("Logo validation success");
 		
 		String title = loginPage.ValidatePageTitle();
@@ -49,6 +51,7 @@ public class LoginPageTest extends TestBase{
 	@Test(priority=4)
 	
 	public void validatelogo() {
+		logger.info("Logo validation success");
 		
 		boolean flag = loginPage.Validatelogo();
 		Assert.assertTrue(flag);
