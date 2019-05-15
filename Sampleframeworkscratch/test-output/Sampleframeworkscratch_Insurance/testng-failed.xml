@@ -5,7 +5,7 @@
     <listener class-name="com.insurance.qa.utilities.Reporting"/>
   </listeners>
   <test thread-count="5" name="InsuranceTest(failed)">
-    <parameter name="browser" value="chrome"/>
+    <parameter name="browser" value="IE"/>
     <classes>
       <class name="com.insurance.qa.testcases.HomePageTest">
         <methods>
