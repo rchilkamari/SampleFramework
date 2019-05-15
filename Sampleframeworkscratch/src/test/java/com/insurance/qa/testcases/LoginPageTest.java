@@ -25,13 +25,14 @@ public class LoginPageTest extends TestBase{
 	public LoginPageTest() {	
 		
 		super(); // To call all the initialization from Base
-		homePage = new HomePage();
+		homePage = new HomePage(driver);
 		
-		 loginPage = new LoginPage();
+		 loginPage = new LoginPage(driver);
 		 readconfig = new ReadConfig();
 		 
 	}
 
+	//LoginPageTest LPT = new LoginPageTest();
 	
 	@Test(priority=1)
 	

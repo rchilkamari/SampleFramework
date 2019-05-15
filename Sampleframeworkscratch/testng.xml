@@ -9,7 +9,7 @@
 
 
 <test name="InsuranceTest">
-	<parameter name="browser" value="chrome"/>
+	<parameter name="browser" value="IE"/>
 
   
     <classes>

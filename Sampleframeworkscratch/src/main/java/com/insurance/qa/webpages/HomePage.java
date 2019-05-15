@@ -1,4 +1,5 @@
 package com.insurance.qa.webpages;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +9,8 @@ import org.openqa.selenium.support.ui.Select;
 import com.insurance.qa.base.TestBase;
 
 public class HomePage extends TestBase  {
+	
+	WebDriver driver;
 	
 	@FindBy(xpath="/html[1]/body[1]/div[3]/h4[1]")
 	@CacheLookup
@@ -81,7 +84,9 @@ public class HomePage extends TestBase  {
 	@CacheLookup
 	WebElement BtnCalculatePremium;	
 	
-	public HomePage() {
+	public HomePage(WebDriver driver) {
+		
+		this.driver =driver;
 		
 		PageFactory.initElements(driver, this);	
 		

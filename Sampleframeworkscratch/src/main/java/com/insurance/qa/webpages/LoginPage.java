@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.insurance.qa.base.TestBase;
 
 public class LoginPage extends TestBase {
-	//WebDriver driver;
+	WebDriver driver;
 	
 	//PageFactory-OR
 	
@@ -44,10 +44,13 @@ public class LoginPage extends TestBase {
 	
 	
 	
-	public LoginPage() {
+	
+	public LoginPage(WebDriver driver) {
 		
 		//WebDriver driver;
+		this.driver =driver;
 		
+				
 		PageFactory.initElements(driver,this);		
 		
 	}
@@ -73,7 +76,7 @@ public class LoginPage extends TestBase {
 		Txtlogin.sendKeys(uname);
 		Txtpassword.sendKeys(pwd);
 		Btnlogin.click();
-		return new HomePage();
+		return new HomePage(driver);
 	}
 	
 }

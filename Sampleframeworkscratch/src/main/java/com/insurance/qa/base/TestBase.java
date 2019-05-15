@@ -67,6 +67,7 @@ public class TestBase {
 		report = new ExtentReports();
 		report.attachReporter(extent);		*/	
 		
+		logger.info("Browser called");
 		
 		//String browserName=prop.getProperty("browser");
 		if(br.equals("chrome")) {
@@ -75,7 +76,7 @@ public class TestBase {
 		}
 		else if(br.equals("IE")) {
 			
-			System.setProperty("webdriver.InternerExplorer.driver",readConfig.getIEPath() );			
+			System.setProperty("webdriver.ie.driver",readConfig.getIEPath() );			
 			
 			driver =new InternetExplorerDriver();
 			
